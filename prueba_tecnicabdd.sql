@@ -1,9 +1,10 @@
 create database prueba_tecnicabdd;
 use prueba_tecnicabdd;
 
+
 # Tabla Producto
 create table Producto(
-	codigo_p int NOT NULL,
+	codigo_p int AUTO_INCREMENT,
     nombre_p varchar(50) NOT NULL,
     precio_p float NOT NULL,
     categoria_p varchar(50) NOT NULL,
@@ -18,12 +19,17 @@ create table Vendedor(
     constraint pk_idv primary key(id_v)
 );
 
-# Tabla Venta
 create table Venta(
 	codigo_v int NOT NULL AUTO_INCREMENT,
     id_vendedor_v int NOT NULL,
     codigo_producto_v int NOT NULL,
     constraint pk_cv primary key(codigo_v),
     constraint fk_ivv foreign key(id_vendedor_v) references Vendedor (id_v),
-    constraint fk_cpp foreign key(codigo_producto_v) references Producto (codigo_p)
-)
+    constraint fk_cpv foreign key(codigo_producto_v) references Producto (codigo_p)
+);
+
+############################
+drop table Venta;
+drop table Vendedor;
+drop table Producto;
+############################
